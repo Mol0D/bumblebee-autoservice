@@ -34,7 +34,6 @@ export default function Services() {
                 <div className="svc-desc">{s.desc}</div>
               </div>
               <div className="svc-foot">
-                <span>Дізнатись більше</span>
                 <span className="arrow-circle"><Icon.ArrowUR /></span>
               </div>
             </div>
