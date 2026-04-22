@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const photos = [
-  { src: '/images/IMG_2633 copy.jpg', alt: 'Майстерня Bumblebee', tag: 'Наша майстерня', grid: 'g1' },
+  { src: '/images/IMG_2633_copy.jpg', alt: 'Майстерня Bumblebee', tag: 'Наша майстерня', grid: 'g1' },
   { src: '/images/unnamed.jpg', alt: 'Ремонт Peugeot', tag: 'Ходова Peugeot', grid: 'g2' },
   { src: '/images/IMG_6207.jpg', alt: 'Комп`ютерна діагностика', tag: 'Діагностика', grid: 'g3' },
   { src: '/images/photo_2025-11-06 15.00.53.jpeg', alt: 'Заміна масла MAHLE', tag: 'ТО та масло', grid: 'g4' },
