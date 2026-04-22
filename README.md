@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bumblebee Autoservice — Next.js Landing
 
-## Getting Started
+Сучасний лендінг автосервісу на Next.js 14 з SSG, SEO оптимізацією та Telegram інтеграцією.
 
-First, run the development server:
+## 🚀 Швидкий старт
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Сайт буде доступний на `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Структура проєкту
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+├── page.tsx              ← головна сторінка
+├── layout.tsx            ← root layout + SEO metadata
+├── blog/
+│   ├── page.tsx          ← сторінка "Всі статті"
+│   └── [slug]/page.tsx   ← окрема стаття (SSG)
+└── api/
+    └── contact/route.ts  ← API для форми (→ Telegram)
 
-## Learn More
+components/              ← React компоненти
+├── Nav.tsx
+├── Hero.tsx
+├── Services.tsx
+├── About.tsx
+├── Process.tsx
+├── Gallery.tsx
+├── Reviews.tsx
+├── Blog.tsx
+├── Contact.tsx
+├── Footer.tsx
+├── FloatCall.tsx
+└── Icons.tsx
 
-To learn more about Next.js, take a look at the following resources:
+lib/
+├── blog.ts              ← структура постів
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+public/
+├── images/              ← фото
+├── sitemap.xml
+└── robots.txt
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+styles/
+└── globals.css          ← основні стилі
+```
 
-## Deploy on Vercel
+## 🔧 Налаштування Telegram
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Перед деплоєм треба налаштувати бота для отримання форм у Telegram:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Дивись:** [`TELEGRAM_SETUP.md`](./TELEGRAM_SETUP.md)
+
+Коротко:
+1. Відкрий **@BotFather** → `/newbot` → отримай токен
+2. Напиши боту щось → отримай chat ID з URL `getUpdates`
+3. Додай у `.env.local`:
+```
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHAT_ID=...
+```
+
+## 📝 Додавання нових статей у блог
+
+Кожна стаття — це файл у `/lib/blog.ts`:
+
+```typescript
+'slug-name': {
+  slug: 'slug-name',
+  title: 'Заголовок статті',
+  category: 'Категорія',
+  date: '01 травня 2026',
+  readTime: '5 хв',
+  excerpt: 'Короткий опис для превʼю',
+  htmlContent: `
+    <h1>Заголовок</h1>
+    <p>Текст статті...</p>
+  `,
+}
+```
+
+Після додавання слаг автоматично з'явиться на `/blog/{slug}` і включиться в `generateStaticParams`.
+
+## 🌐 Deploy на Vercel
+
+```bash
+# 1. Логін у Vercel
+npm i -g vercel
+vercel login
+
+# 2. Deploy
+vercel --prod
+```
+
+В **Vercel Dashboard → Settings → Environment Variables** додай:
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
+## 🎨 Стилізація
+
+Проєкт використовує чистий CSS з кастомними змінними:
+
+```css
+:root {
+  --bb-yellow: #F3CA18;
+  --bb-bg: #13140F;
+  --font-display: 'Bowlby One';
+  --font-body: 'Manrope';
+  --font-ui: 'Space Grotesk';
+}
+```
+
+Всі шрифти завантажуються з Google Fonts (через `next/font`).
+
+## 🔍 SEO
+
+- **Metadata** в `app/layout.tsx` для базової сторінки
+- **generateMetadata** для кожної статті в `/blog/[slug]/page.tsx`
+- **Schema.org LocalBusiness** для Google Business Panel
+- **Sitemap.xml** + **robots.txt** для пошукових машин
+
+Ключові слова можна оновити після уточнення від SEO-спеціаліста.
+
+## 📸 Оптимізація фото
+
+Всі фото у `/public/images/` автоматично оптимізуються через `next/image`:
+- WebP формат для новіших браузерів
+- Lazy loading
+- Responsive (різні розміри для мобіля)
+
+## 🧪 Build & Test
+
+```bash
+npm run build       # Production build (генерує SSG статті)
+npm run start       # Запуск production сервера
+npm run lint        # Перевірка коду
+```
+
+## 📞 Контакти
+
+- **Адреса:** Київ, Теремки-2, Голосіївський р-н
+- **Телефон:** +380 XX XXX XX XX (оновить у Contact компоненті)
+- **Email:** hi@bumblebee.auto (оновить у Footer)
+- **Instagram:** @bumblebee_autoservice
+
+---
+
+Запущено на **Next.js 16.2.4** | **TypeScript** | **Vercel-ready**
