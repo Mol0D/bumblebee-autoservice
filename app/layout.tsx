@@ -45,7 +45,7 @@ const localBusinessSchema = {
   name: 'Bumblebee Autoservice',
   description: 'Чесний автосервіс у Києві на Теремках-2',
   url: 'https://bumblebee.auto',
-  telephone: '+380000000000',
+  telephone: '+380637219130',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Київ',
@@ -55,8 +55,8 @@ const localBusinessSchema = {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 50.375,
-    longitude: 30.45,
+    latitude: 50.3855572,
+    longitude: 30.4455904,
   },
   openingHoursSpecification: [
     {

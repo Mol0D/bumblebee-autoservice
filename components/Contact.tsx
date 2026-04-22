@@ -37,14 +37,14 @@ export default function Contact() {
                 <div className="ic"><Icon.Pin /></div>
                 <div>
                   <div className="lb">Адреса</div>
-                  <div className="val">Київ, Теремки-2,<br />Голосіївський р-н</div>
+                  <div className="val">м. Київ, вул. Д. Луценка 16,<br />бокс 773</div>
                 </div>
               </div>
               <div className="cp">
                 <div className="ic"><Icon.Phone /></div>
                 <div>
                   <div className="lb">Телефон</div>
-                  <div className="val">+380 (XX) XXX-XX-XX</div>
+                  <div className="val">+380637219130</div>
                 </div>
               </div>
               <div className="cp">
@@ -107,7 +107,7 @@ export default function Contact() {
 
         <div className="map-wrap">
           <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=30.42%2C50.36%2C30.48%2C50.39&layer=mapnik&marker=50.375%2C30.45"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=30.43%2C50.38%2C30.46%2C50.39&layer=mapnik&marker=50.3855572%2C30.4455904"
             title="Bumblebee — Теремки-2, Київ"
             loading="lazy"
             style={{ width: '100%', height: '420px', border: 0 }}

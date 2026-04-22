@@ -35,8 +35,8 @@ export default function Footer() {
           </div>
           <div>
             <h5>Контакти</h5>
-            <a href="tel:+380000000000"><Icon.Phone /> +380 XX XXX XX XX</a>
-            <a href="mailto:hi@bumblebee.auto"><Icon.Mail /> hi@bumblebee.auto</a>
+            <a href="tel:+380637219130"><Icon.Phone /> +380637219130</a>
+            {/*<a href="mailto:hi@bumblebee.auto"><Icon.Mail /> hi@bumblebee.auto</a>*/}
             <a href="https://www.instagram.com/bumblebee_autoservice/" target="_blank" rel="noopener"><Icon.Insta /> Instagram</a>
           </div>
         </div>
