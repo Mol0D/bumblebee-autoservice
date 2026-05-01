@@ -8,6 +8,7 @@ export async function POST(req: Request) {
     }
 
     const timestamp = new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv' });
+    const payload = { name, phone, car, timestamp };
 
     const response = await fetch('https://bumblebee-autoservice-bot-production.up.railway.app/new-request', {
       method: 'POST',
@@ -15,11 +16,10 @@ export async function POST(req: Request) {
         'Content-Type': 'application/json',
         'x-secret-token': botSecret,
       },
-      body: JSON.stringify({ name, phone, car, timestamp }),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
-      console.error('Bot webhook error:', await response.text());
       return Response.json({ error: 'Failed to send request' }, { status: 500 });
     }
 
