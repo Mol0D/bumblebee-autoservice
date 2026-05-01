@@ -7,13 +7,15 @@ export async function POST(req: Request) {
       return Response.json({ error: 'Missing bot credentials' }, { status: 500 });
     }
 
+    const timestamp = new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv' });
+
     const response = await fetch('https://bumblebee-autoservice-bot-production.up.railway.app/new-request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'x-secret-token': botSecret,
       },
-      body: JSON.stringify({ name, phone, car }),
+      body: JSON.stringify({ name, phone, car, timestamp }),
     });
 
     if (!response.ok) {
